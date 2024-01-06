@@ -15,7 +15,7 @@ const Homepage = () => {
   const globalStats = data?.data?.stats;
 
   if (isFetching) return <Loader />;
-
+// console.log(data)
   return (
     <>
       <Title level={2} className="heading">Global Crypto Stats</Title>

@@ -10,7 +10,8 @@ const createRequest = (url) => ({ url, headers: cryptoApiHeaders });
 
 export const cryptoApi = createApi({
   reducerPath: 'cryptoApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_CRYPTO_API_URL }),
+  baseQuery: fetchBaseQuery({ 
+  baseUrl: process.env.REACT_APP_CRYPTO_API_URL }),
   endpoints: (builder) => ({
     getCryptos: builder.query({
       query: (count) => createRequest(`/coins?limit=${count}`),
@@ -26,8 +27,8 @@ export const cryptoApi = createApi({
     }),
 
     // Note: To access this endpoint you need premium plan
-    getExchanges: builder.query({
-      query: () => createRequest('/exchanges'),
+    getRefCurrencies: builder.query({
+      query: () => createRequest('/reference-currencies'),
     }),
   }),
 });
@@ -35,6 +36,6 @@ export const cryptoApi = createApi({
 export const {
   useGetCryptosQuery,
   useGetCryptoDetailsQuery,
-  useGetExchangesQuery,
+  useGetRefCurrenciesQuery,
   useGetCryptoHistoryQuery,
 } = cryptoApi;
